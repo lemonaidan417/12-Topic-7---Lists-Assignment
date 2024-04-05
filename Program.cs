@@ -1,4 +1,6 @@
-﻿namespace _12_Topic_7___Lists_Assignment
+﻿using System.Collections.Generic;
+
+namespace _12_Topic_7___Lists_Assignment
 {
     internal class Program
     {
@@ -7,7 +9,7 @@
             List<int> list = new List<int>();
             Random generator = new Random();
 
-            Console.WriteLine("Welcome to my list assignment. " +
+            Console.WriteLine("Welcome to my List of Integers assignment. " +
                 "\nI will be generating a random list of numbers between 10 and 20 and " +
                 "doing various things to said list.");
 
@@ -15,20 +17,10 @@
             {
                 list.Add(generator.Next(10, 21));
             }
-            list.Sort();
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (i == list.Count)
-                {
-                    Console.Write(list[i]);
-                }
-                else
-                {
-                    Console.Write(list[i] + ", ");
-                }
-            }
+            Console.WriteLine(string.Join(", ", list));
 
             string choice = "";
+            int valueAdd, userOccurance;
 
             while (choice != "q")
             {
@@ -91,37 +83,42 @@
                     list.RemoveAll(i => i == numRemove);
                     list.Sort();
                     Console.WriteLine(string.Join(", ", list));
-                }
+                } // Done
                 else if (choice == "4")
                 {
-                    Console.WriteLine("You chose");
-
-                }
+                    Console.WriteLine("You chose Add a value to the list");
+                    Console.WriteLine("Please input the value that you would like added to the list.");
+                    list.Add(valueAdd = Convert.ToInt32(Console.ReadLine()));
+                    Console.WriteLine(string.Join(", ", list));
+                } // Done
                 else if (choice == "5")
                 {
-                    Console.WriteLine("You chose");
-
+                    Console.WriteLine("You chose Count the number of occurrences of a specified number");
+                    userOccurance = Convert.ToInt32(Console.ReadLine());
+                    
                 }
                 else if (choice == "6")
                 {
-                    Console.WriteLine("You chose");
-
-                }
+                    Console.WriteLine("You chose Print the largest value");
+                    int max = list.Max();
+                    Console.WriteLine($"The largest value is {max}");
+                } // Done
                 else if (choice == "7")
                 {
-                    Console.WriteLine("You chose");
-
-                }
+                    Console.WriteLine("You chose Print the smallest value");
+                    int min = list.Min();
+                    Console.WriteLine($"The smallest value is {min}");
+                } // Done
                 else if (choice == "8")
                 {
                     Console.WriteLine("You chose");
 
-                }
+                } // Bonus
                 else if (choice == "9")
                 {
                     Console.WriteLine("You chose");
 
-                }
+                } // Bonus
                 // Add an else for each valid choice...
                 else
                 {
@@ -132,10 +129,23 @@
         }
         public static void listsOfStrings()
         {
-
+            Console.WriteLine("Welcome to my List of String assignment." +
+                "\nI will now create a list of 5 of my favourite vegetables.");
+            List<string> vegList = new List<string>();
+            vegList.Add("1 - GREEN ONION");
+            vegList.Add("2 - GREEN BEANS");
+            vegList.Add("3 - LETTUCE");
+            vegList.Add("4 - POTATO");
+            vegList.Add("5 - BROCCOLI");
+            Console.WriteLine("Vegetables");
+            Console.WriteLine(string.Join("\n", vegList));
         }
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+
             string choice = "";
 
             while (choice != "q")
