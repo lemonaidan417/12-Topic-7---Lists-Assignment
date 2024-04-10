@@ -130,7 +130,7 @@ namespace _12_Topic_7___Lists_Assignment
         {
             Console.WriteLine("Welcome to my List of String assignment." +
                 "\nI will now create a list of 5 of my favourite vegetables.");
-            List<string> vegList = new List<string>();
+            List<string> vegList = new List<string>(); List<int> vegListPos = new List<int>();
             string vegChoice = "";
             vegList.Add("GREEN ONION");
             vegList.Add("GREEN BEANS");
@@ -139,26 +139,25 @@ namespace _12_Topic_7___Lists_Assignment
             vegList.Add("BROCCOLI");
             Console.WriteLine();
             Console.WriteLine("Vegetables");
-            // Console.WriteLine(string.Join("\n", $"{vegList} - ", vegList));
-            vegList.ForEach(Console.WriteLine);
+            Console.WriteLine("--------------");
+            Console.WriteLine(string.Join("\n", $"{vegListPos} - {vegList}"));
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
 
-
-            Console.WriteLine("Please select what you would like to to do to the list:");
-            Console.WriteLine();
-            Console.WriteLine("1 - Remove a vegetable by index");
-            Console.WriteLine("2 - Remove a vegetable by value");
-            Console.WriteLine("3 - Search for a vegetable");
-            Console.WriteLine("4 - Add a vegetable");
-            Console.WriteLine("5 - Sort list");
-            Console.WriteLine("6 - Clear the list");
-            Console.WriteLine("q - Quit");
-            Console.WriteLine();
-            vegChoice = Console.ReadLine();
             while (vegChoice != "q")
             {
+                Console.WriteLine("Please select what you would like to to do to the list:");
+                Console.WriteLine();
+                Console.WriteLine("1 - Remove a vegetable by index");
+                Console.WriteLine("2 - Remove a vegetable by value");
+                Console.WriteLine("3 - Search for a vegetable");
+                Console.WriteLine("4 - Add a vegetable");
+                Console.WriteLine("5 - Sort list");
+                Console.WriteLine("6 - Clear the list");
+                Console.WriteLine("q - Quit");
+                Console.WriteLine();
+                vegChoice = Console.ReadLine();
                 if (vegChoice == "1")
                 {
                     Console.WriteLine("You chose Remove a vegetable by index");
@@ -170,14 +169,18 @@ namespace _12_Topic_7___Lists_Assignment
                 else if (vegChoice == "2")
                 {
                     Console.WriteLine("You chose Remove a vegetable by value");
-                    Console.WriteLine("Please input the value of the vegetable you would like to remove: ");
-                    string vegRemoveVal = Console.ReadLine().ToLower().Trim();
+                    Console.WriteLine("Please input the name of the vegetable you would like to remove: ");
+                    string vegRemoveVal = Console.ReadLine().ToUpper().Trim();
                     vegList.Remove(vegRemoveVal);
                     Console.WriteLine(string.Join("\n", vegList));
                 }
                 else if (vegChoice == "3")
                 {
                     Console.WriteLine("You chose Search for a vegetable");
+                    Console.WriteLine("Please input the name of a vegetable and I will tell you" +
+                        "its position in the list: ");
+                    string vegStringPos = Console.ReadLine().ToUpper().Trim();
+                    
                 }
                 else if (vegChoice == "4")
                 {
