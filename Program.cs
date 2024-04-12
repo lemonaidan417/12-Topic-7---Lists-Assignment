@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace _12_Topic_7___Lists_Assignment
 {
@@ -132,15 +134,15 @@ namespace _12_Topic_7___Lists_Assignment
                 "\nI will now create a list of 5 of my favourite vegetables.");
             List<string> vegList = new List<string>(); List<int> vegListPos = new List<int>();
             string vegChoice = "";
-            vegList.Add("GREEN ONION");
-            vegList.Add("GREEN BEANS");
-            vegList.Add("LETTUCE");
-            vegList.Add("POTATO");
-            vegList.Add("BROCCOLI");
+            vegList.Add("GREEN ONION"); vegListPos.Add(1);
+            vegList.Add("GREEN BEANS"); vegListPos.Add(2);
+            vegList.Add("LETTUCE"); vegListPos.Add(3);
+            vegList.Add("POTATO"); vegListPos.Add(4);
+            vegList.Add("BROCCOLI"); vegListPos.Add(5);
             Console.WriteLine();
             Console.WriteLine("Vegetables");
             Console.WriteLine("--------------");
-            Console.WriteLine(string.Join("\n", $"{vegListPos} - {vegList}"));
+            Console.WriteLine(string.Join("\n", vegList));
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -161,7 +163,7 @@ namespace _12_Topic_7___Lists_Assignment
                 if (vegChoice == "1")
                 {
                     Console.WriteLine("You chose Remove a vegetable by index");
-                    Console.WriteLine("Please input the index of the vegetable you would like to remove: ");
+                    Console.Write("Please input the index of the vegetable you would like to remove: ");
                     int vegRemoveInt = int.Parse(Console.ReadLine());
                     vegList.RemoveAt((vegRemoveInt - 1));
                     Console.WriteLine(string.Join("\n", vegList));
@@ -169,7 +171,7 @@ namespace _12_Topic_7___Lists_Assignment
                 else if (vegChoice == "2")
                 {
                     Console.WriteLine("You chose Remove a vegetable by value");
-                    Console.WriteLine("Please input the name of the vegetable you would like to remove: ");
+                    Console.Write("Please input the name of the vegetable you would like to remove: ");
                     string vegRemoveVal = Console.ReadLine().ToUpper().Trim();
                     vegList.Remove(vegRemoveVal);
                     Console.WriteLine(string.Join("\n", vegList));
@@ -177,22 +179,33 @@ namespace _12_Topic_7___Lists_Assignment
                 else if (vegChoice == "3")
                 {
                     Console.WriteLine("You chose Search for a vegetable");
-                    Console.WriteLine("Please input the name of a vegetable and I will tell you" +
+                    Console.Write("Please input the name of a vegetable and I will tell you " +
                         "its position in the list: ");
-                    string vegStringPos = Console.ReadLine().ToUpper().Trim();
-                    
+                    string vegStringFind = Console.ReadLine().ToUpper().Trim();
+                    Console.WriteLine($"The position of {vegStringFind} in the " +
+                        $"list is {vegList.IndexOf(vegStringFind) + 1}");
                 }
                 else if (vegChoice == "4")
                 {
                     Console.WriteLine("You chose Add a vegetable");
+                    Console.Write("Please input the name of the vegetable you would like to add: ");
+                    string vegAdd = Console.ReadLine().ToUpper().Trim();
+                    Console.WriteLine($"You would like to add {vegAdd}");
+                    vegList.Add(vegAdd);
+                    Console.WriteLine(string.Join("\n", vegList));
                 }
                 else if (vegChoice == "5")
                 {
                     Console.WriteLine("You chose Sort the list");
+                    vegList.Sort();
+                    Console.WriteLine(string.Join("\n", vegList));
                 }
                 else if (vegChoice == "6")
                 {
                     Console.WriteLine("You chose Clear the list");
+                    vegList.Clear();
+                    Console.WriteLine(string.Join("\n", vegList));
+                    Console.WriteLine("The list is now clear");
                 }
                 else
                 {
